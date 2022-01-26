@@ -5,7 +5,7 @@
         Par laboratoire
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item" *ngFor="let l of laboratories._embedded.laboratories">{{l.name}}</li>
+        <li (click)="getArticlesByLab(l)"class="list-group-item" *ngFor="let l of laboratories._embedded.laboratories">{{l.name}}</li>
       </ul>
 
 

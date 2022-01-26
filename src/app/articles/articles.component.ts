@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticlesService} from "../services/articles.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-articles',
@@ -12,15 +12,30 @@ export class ArticlesComponent implements OnInit {
     ""
   public articles = <any>{};
   constructor(public articlesService:ArticlesService,
-              private route:ActivatedRoute
-              ) { }
+              private route:ActivatedRoute,
+              private router:Router
+              ) {
+
+    }
+
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params.id)
-    this.getArticles()
+    this.router.events.subscribe((val) =>{
+      if (val instanceof NavigationEnd){
+        let url = val.url;
+        let p1 = this.route.snapshot.params.p1
+        if (p1 == 1) {
+          this.getArticles("/articles")
+        }
+        else if (p1 == 2){
+          let idLab = this.route.snapshot.params.p2
+          this.getArticles("/laboratories/"+idLab+"/articles")
+        }
+      }
+    });
   }
-  private getArticles() {
-    this.articlesService.getResource("/articles")
+  private getArticles(url:any) {
+    this.articlesService.getResource(url)
       .subscribe(data => {
         this.articles = data;
       })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticlesService} from "../services/articles.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-articlesCatalogue',
@@ -10,7 +11,7 @@ export class ArticlesCatalogueComponent implements OnInit {
   public laboratories = <any>{};
 
 
-  constructor(private articlesService: ArticlesService) {
+  constructor(private articlesService: ArticlesService,private router:Router) {
   }
 
   ngOnInit(): void {
@@ -27,4 +28,7 @@ export class ArticlesCatalogueComponent implements OnInit {
   }
 
 
+  getArticlesByLab(l: any) {
+this.router.navigateByUrl('/articles/2/'+l.id)
+  }
 }

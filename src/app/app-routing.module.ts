@@ -6,11 +6,11 @@ import {ArticlesComponent} from "./articles/articles.component";
 
 const routes: Routes = [
   {
-    path: 'articles/:id',
+    path: 'articles/:p1/:p2',
     component: ArticlesCatalogueComponent
   },  {
-    path: 'articles/',
-    redirectTo:'articles/1',pathMatch:'full'
+    path: 'articles',
+    redirectTo:'articles/1/0',pathMatch:'full'
   },
 
 
