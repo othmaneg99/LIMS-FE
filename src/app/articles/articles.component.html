@@ -1,1 +1,18 @@
-<p>articles works!</p>
+
+<div class="d-flex justify-content-around " *ngIf="articles">
+  <div  *ngFor="let a of articles._embedded.articles">
+
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{this.articlesService.host+'/photoArticle/'+a.id}}" alt="Article image">
+      <div class="card-body">
+        <h5 class="card-title">{{a.name}}</h5>
+
+        <p class="card-text"></p>
+        <a href="#" class="btn btn-light">détails ></a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

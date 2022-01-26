@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ArticlesService} from "../services/articles.service";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-articles',
@@ -6,10 +8,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
+  public imagesPath = "C:/Users/othmane/lims/articles/" +
+    ""
+  public articles = <any>{};
+  constructor(public articlesService:ArticlesService,
+              private route:ActivatedRoute,
+              private router:Router
+              ) {
 
-  constructor() { }
+    }
+
 
   ngOnInit(): void {
+    this.router.events.subscribe((val) =>{
+      if (val instanceof NavigationEnd){
+        let url = val.url;
+        let p1 = this.route.snapshot.params.p1
+        if (p1 == 1) {
+          this.getArticles("/articles")
+        }
+        else if (p1 == 2){
+          let idLab = this.route.snapshot.params.p2
+          this.getArticles("/laboratories/"+idLab+"/articles")
+        }
+        else if (p1 == 3){
+          let idCat = this.route.snapshot.params.p2
+          this.getArticles("/categories/"+idCat+"/articles")
+        }
+
+      }
+    });
   }
+  private getArticles(url:any) {
+    this.articlesService.getResource(url)
+      .subscribe(data => {
+        this.articles = data;
+      })
+  }
+
 
 }

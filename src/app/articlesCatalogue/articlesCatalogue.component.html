@@ -1,4 +1,30 @@
-<ul class="list-group"*ngIf="laboratories">
-  <li class="list-group-item"*ngFor="let l of laboratories._embedded.laboratories">{{l.name}}</li>
-</ul>
+<div class="container d-flex mt-5">
+  <div class="col-md-3">
+    <div class="card"*ngIf="laboratories">
+      <div class="card-header">
+        Par laboratoire
+      </div>
+      <ul class="list-group list-group-flush">
+        <li (click)="getArticlesByLab(l)" class="list-group-item" *ngFor="let l of laboratories._embedded.laboratories">{{l.name}}</li>
+      </ul>
+
+
+    </div>
+    <div class="card mt-5"*ngIf="categories">
+      <div class="card-header">
+        Par catégorie
+      </div>
+      <ul class="list-group list-group-flush">
+        <li (click)="getArticlesByCat(c)"class="list-group-item" *ngFor="let c of categories._embedded.categories">{{c.name}}</li>
+      </ul>
+
+
+    </div>
+
+</div>
+  <div class="col-md-9 ">
+<app-articles></app-articles>
+  </div>
+</div>
+
 
