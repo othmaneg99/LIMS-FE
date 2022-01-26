@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 })
 export class ArticlesCatalogueComponent implements OnInit {
   public laboratories = <any>{};
+  public categories = <any>{};
 
 
   constructor(private articlesService: ArticlesService,private router:Router) {
@@ -16,6 +17,7 @@ export class ArticlesCatalogueComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLaboratories()
+    this.getCategories()
   }
 
   private getLaboratories() {
@@ -30,5 +32,16 @@ export class ArticlesCatalogueComponent implements OnInit {
 
   getArticlesByLab(l: any) {
 this.router.navigateByUrl('/articles/2/'+l.id)
+  }
+
+  private getCategories() {
+    this.articlesService.getResource("/categories")
+      .subscribe(data => {
+        this.categories = data;
+      })
+  }
+
+  getArticlesByCat(c: any) {
+    this.router.navigateByUrl('/articles/3/'+c.id)
   }
 }

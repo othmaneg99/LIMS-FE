@@ -31,6 +31,11 @@ export class ArticlesComponent implements OnInit {
           let idLab = this.route.snapshot.params.p2
           this.getArticles("/laboratories/"+idLab+"/articles")
         }
+        else if (p1 == 3){
+          let idCat = this.route.snapshot.params.p2
+          this.getArticles("/categories/"+idCat+"/articles")
+        }
+
       }
     });
   }
