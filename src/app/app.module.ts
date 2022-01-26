@@ -7,12 +7,14 @@ import { ArticlesCatalogueComponent } from './articlesCatalogue/articlesCatalogu
 import { RouterModule } from '@angular/router';
 import {HttpClientModule} from "@angular/common/http";
 import { ArticlesComponent } from './articles/articles.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticlesCatalogueComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
