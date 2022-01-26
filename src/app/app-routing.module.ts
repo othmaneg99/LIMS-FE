@@ -6,13 +6,13 @@ import {ArticlesComponent} from "./articles/articles.component";
 
 const routes: Routes = [
   {
-    path: 'articles',
+    path: 'articles/:id',
     component: ArticlesCatalogueComponent
+  },  {
+    path: 'articles/',
+    redirectTo:'articles/1',pathMatch:'full'
   },
-  {
-    path: 'articles',
-    component: ArticlesComponent
-  }
+
 
 ];
 

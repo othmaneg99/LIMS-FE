@@ -23,7 +23,7 @@ import { ArticlesComponent } from './articles/articles.component';
 
 
     ]),
-    HttpClientModule
+    HttpClientModule,
 
   ],
   providers: [],
