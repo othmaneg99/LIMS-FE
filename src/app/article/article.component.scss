@@ -1,0 +1,34 @@
+.img-container{
+  width: 25vw;
+  height: 40vh;
+}
+.article-img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.success {
+  color: green;
+  font-weight: 500;
+}
+.danger {
+  color: red;
+  font-weight: 500;
+}
+.dispo {
+  margin: 10px 0;
+}
+.btn-submit {
+  background-color: #09b775;
+  padding: 7px;
+  border-radius: 10px;
+  width: 250px;
+  color: white;
+  font-weight: 400;
+  border: none;
+margin-top: 40px;
+}
+.bag-icon {
+
+  width: 25px;
+}

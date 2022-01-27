@@ -7,23 +7,34 @@ import { ArticlesCatalogueComponent } from './articlesCatalogue/articlesCatalogu
 import { RouterModule } from '@angular/router';
 import {HttpClientModule} from "@angular/common/http";
 import { ArticlesComponent } from './articles/articles.component';
+import {FormsModule} from "@angular/forms";
+import { UserHeaderComponent } from './user-header/user-header.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ArticleComponent } from './article/article.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticlesCatalogueComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    UserHeaderComponent,
+    ArticleComponent
   ],
   imports: [
+    FormsModule,
+
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([
       {path: 'articles', component: ArticlesCatalogueComponent},
       {path: 'articles', component: ArticlesComponent},
+      {path: 'article/:id', component: ArticleComponent},
 
 
     ]),
     HttpClientModule,
+    FontAwesomeModule,
 
   ],
   providers: [],

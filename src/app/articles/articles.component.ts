@@ -8,8 +8,7 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
   styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
-  public imagesPath = "C:/Users/othmane/lims/articles/" +
-    ""
+
   public articles = <any>{};
   constructor(public articlesService:ArticlesService,
               private route:ActivatedRoute,
@@ -26,6 +25,7 @@ export class ArticlesComponent implements OnInit {
         let p1 = this.route.snapshot.params.p1
         if (p1 == 1) {
           this.getArticles("/articles")
+
         }
         else if (p1 == 2){
           let idLab = this.route.snapshot.params.p2
@@ -38,13 +38,29 @@ export class ArticlesComponent implements OnInit {
 
       }
     });
+    let p1 = this.route.snapshot.params.p1
+    if (p1 == 1) {
+      this.getArticles("/articles")
+      console.log("test")
+    }
   }
+
   private getArticles(url:any) {
     this.articlesService.getResource(url)
       .subscribe(data => {
         this.articles = data;
       })
   }
+  private getArticlesByKeyword(mc:any) {
+    this.articlesService.getResource('/articles/search/articlesByKeyword?mc='+mc)
+      .subscribe(data => {
+        this.articles = data;
+      })
+  }
 
+
+  onChercher(value: any) {
+    this.getArticlesByKeyword(value.keyword)
+  }
 
 }

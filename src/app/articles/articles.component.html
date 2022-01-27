@@ -1,6 +1,15 @@
 
-<div class="d-flex justify-content-around " *ngIf="articles">
-  <div  *ngFor="let a of articles._embedded.articles">
+<form  #f='ngForm' (ngSubmit)="onChercher(f.value)">
+  <div class="form-group col-md-5 margin-left">
+    <div class="col-md-5"></div>
+    <input  type="text" name="keyword" placeholder="rechercher" ngModel>
+    <button type="submit" class="btn btn-secondary m-lg-3">chercher</button>
+  </div>
+</form>
+
+<div class="grid-containerr" *ngIf="articles">
+
+  <div  style ="margin: 10px 20px" *ngFor="let a of articles._embedded.articles" class="">
 
     <div class="card" style="width: 18rem;">
       <img class="card-img-top" src="{{this.articlesService.host+'/photoArticle/'+a.id}}" alt="Article image">
@@ -8,10 +17,9 @@
         <h5 class="card-title">{{a.name}}</h5>
 
         <p class="card-text"></p>
-        <a href="#" class="btn btn-light">détails ></a>
+        <a href="#" class="btn btn-light" routerLink="{{'/article/'+a.id}}">détails ></a>
       </div>
     </div>
-
   </div>
 
 </div>

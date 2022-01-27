@@ -1,5 +1,20 @@
+
 .card-img-top {
   width: 100%;
-  height: 15vw;
-  object-fit: cover;
+  height: 25vh;
+  object-fit: contain;
+}
+.sticky {
+  position: sticky;
+
+}
+.grid-containerr {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+  grid-gap: 50px;
+}
+.margin-left {
+  margin-left: 20px;
 }

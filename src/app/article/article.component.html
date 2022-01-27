@@ -1,0 +1,33 @@
+<app-user-header></app-user-header>
+
+<div *ngIf="article" class="container mt-5">
+  <div class="row">
+    <div class="col img-container">
+      <img class="article-img" src="{{this.articleService.host+'/photoArticle/'+article.id}}" alt="Article image">
+    </div>
+    <div  class="col">
+      <p class="fs-1 text-start h2">{{article.name}}</p>
+      <p class="">{{"Référence : "+article.ref}} </p>
+      <p>
+        {{article.description}}
+      </p>
+      <p class="dispo">
+        Disponibilité :
+        <span  [ngClass]="article.currentStock>0?'success':'danger'">
+        {{article.currentStock>0?'En stock': 'En rupture de stock'}}
+      </span>
+      </p>
+
+      <div class="quantite ">
+        <label for="quantite">Quantité : </label>
+        <input id="quantite" type="number"  value="1" min="1" max="100" step="1" />
+      </div>
+
+      <button class=" float-right btn-submit">Ajouter a Ma Commande <img class="bag-icon" src="./assets/bag.svg" alt=""></button>
+
+
+
+
+    </div>
+  </div>
+</div>
