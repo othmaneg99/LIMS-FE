@@ -21,5 +21,7 @@ public article:any = {}
         this.article = data;
       })
   }
-
+  doThis() {
+    console.log('zab')
+  }
 }
