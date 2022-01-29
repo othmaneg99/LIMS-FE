@@ -13,6 +13,14 @@ import {FormsModule} from "@angular/forms";
 import { UserHeaderComponent } from './user-header/user-header.component';
 import {ArticleComponent} from "./article/article.component";
 import { CreateCategoryComponent } from './create-category/create-category.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -29,7 +37,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     FormsModule,
-
     BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -47,7 +54,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: 'article/:id', component: ArticleComponent},
     ]),
     HttpClientModule,
-
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
