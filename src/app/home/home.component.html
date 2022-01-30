@@ -1,1 +1,107 @@
-<p>home works!</p>
+<section class="vh-100">
+  <mat-button-toggle-group id="lang-button" #group="matButtonToggleGroup"
+                           appearance="legacy" name="lang" aria-label="Lang"
+                           [value]="lang"
+                           (change)="onLangChange(group.value)">
+    <mat-button-toggle value="en">EN</mat-button-toggle>
+    <mat-button-toggle value="fr">FR</mat-button-toggle>
+  </mat-button-toggle-group>
+  <div class="container-fluid h-100 p-0">
+    <div class="row d-flex align-items-center justify-content-center h-100 w-100">
+      <div id="home-carousel" class="col">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <img src="assets/images/laboratory/1.jpg" class="d-block" alt="hel">
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <img src="assets/images/laboratory/4.jpg" class="d-block" alt="hel">
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <img src="assets/images/laboratory/3.jpg" class="d-block" alt="hel">
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <img src="assets/images/laboratory/2.jpg" class="d-block" alt="hel">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="container">
+          <div class="text-center mb-5">
+            <img src="./assets/images/logo/logo1.png" height="130" alt="logo">
+          </div>
+          <div id="inputs">
+            <form #f="ngForm" (ngSubmit)="onFormSubmit(f)">
+              <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>{{'emailAddress' | translate}}</mat-label>
+                  <input type="email" name="email" ngModel required matInput
+                         placeholder="{{'emailAddress' | translate}}">
+                  <button mat-icon-button matSuffix>
+                    <mat-icon matSuffix>alternate_email</mat-icon>
+                  </button>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>{{'password' | translate}}</mat-label>
+                  <input matInput required name="password" ngModel [type]="hidePassword ? 'password' : 'text'"
+                         placeholder="{{'emailAddress' | translate}}">
+                  <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+              </p>
+
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <mat-checkbox ngModel name="keepSession" class="example-margin" color="primary">
+                  {{'rememberMe' | translate}}
+                </mat-checkbox>
+                <a mat-button>{{'forgotPassword?' | translate}}</a>
+              </div>
+
+              <!-- Submit button -->
+              <button class="action-button" type="submit" mat-raised-button color="primary">
+                {{'signIn' | translate}}
+              </button>
+
+
+            </form>
+            <div class="divider d-flex align-items-center my-4">
+              <p class="text-center fw-bold mx-3 mb-0 text-muted">{{'or' | translate | uppercase}}</p>
+            </div>
+            <button [disabled]="!!user" class="action-button" type="button" mat-raised-button (click)="googleSignIn()"
+                    color="basic">
+              <svg style="margin-right: 10px;" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                <g>
+                  <path fill="#EA4335"
+                        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                  <path fill="#4285F4"
+                        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                  <path fill="#FBBC05"
+                        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                  <path fill="#34A853"
+                        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                  <path fill="none" d="M0 0h48v48H0z"></path>
+                </g>
+              </svg>
+              {{'continueWithGoogle' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
