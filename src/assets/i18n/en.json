@@ -1,3 +1,9 @@
 {
-  "signIn": "Sign In"
+  "signIn": "Sign In",
+  "emailAddress": "Email address",
+  "password": "Password",
+  "continueWithGoogle": "Continue with Google",
+  "or": "or",
+  "rememberMe": "Remember me",
+  "forgotPassword?": "Forgot password?"
 }
