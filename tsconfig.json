@@ -1,6 +1,8 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
+  "skipLibCheck": true,
+  "allowSyntheticDefaultImports": true,
   "compilerOptions": {
 
     "baseUrl": "./",
@@ -29,5 +31,11 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "typings/main",
+    "typings/main.d.ts",
+    "typings/index.d.ts"
+  ]
 }

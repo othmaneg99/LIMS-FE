@@ -12,4 +12,11 @@ export class ArticlesService {
   public getResource(url:any) {
 return this.http.get(this.host+url)
   }
+  public deleteResource(url:any) {
+    return this.http.delete(url)
+  }
+  public saveResource(url:any,data:any){
+    return this.http.post(url,data)
+
+  }
 }
