@@ -12,7 +12,12 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import {FormsModule} from "@angular/forms";
 import { UserHeaderComponent } from './user-header/user-header.component';
 import {ArticleComponent} from "./article/article.component";
-import { CreateCategoryComponent } from './create-category/create-category.component';
+import { AdminComponent } from './admin/admin.component';
+import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { AdminSideBarComponent } from './admin-side-bar/admin-side-bar.component';
+import { ListLaboratoriesComponent } from './list-laboratories/list-laboratories.component';
+import { ListArticlesComponent } from './list-articles/list-articles.component';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -25,7 +30,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserHeaderComponent,
     ArticleComponent,
     HomeComponent,
-    CreateCategoryComponent
+    AdminComponent,
+    ListCategoriesComponent,
+    AdminSideBarComponent,
+    ListLaboratoriesComponent,
+    ListArticlesComponent,
   ],
   imports: [
     FormsModule,
@@ -45,6 +54,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: 'articles', component: ArticlesCatalogueComponent},
       {path: 'articles', component: ArticlesComponent},
       {path: 'article/:id', component: ArticleComponent},
+      {path: 'admin', component: AdminComponent},
+
     ]),
     HttpClientModule,
 
