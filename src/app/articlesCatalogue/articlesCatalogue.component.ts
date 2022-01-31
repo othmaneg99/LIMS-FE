@@ -10,6 +10,10 @@ import {Router} from "@angular/router";
 export class ArticlesCatalogueComponent implements OnInit {
   public laboratories = <any>{};
   public categories = <any>{};
+  public filter = {
+    category: null,
+    laboratory: null,
+  }
 
 
   constructor(private resourceService: ResourceService, private router: Router) {
@@ -40,5 +44,15 @@ export class ArticlesCatalogueComponent implements OnInit {
 
   getArticlesByCat(c: any) {
     this.router.navigateByUrl('/articles/3/' + c.id)
+  }
+
+  refresh() {
+    this.filter = {
+      category: null,
+      laboratory: null,
+    }
+    this.router.navigateByUrl("/articles").then(()=>{
+      location.reload();
+    })
   }
 }

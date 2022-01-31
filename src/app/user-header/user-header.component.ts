@@ -19,4 +19,8 @@ export class UserHeaderComponent implements OnInit {
     sessionStorage.removeItem('user');
     this.router.navigateByUrl('/');
   }
+
+  goHome() {
+    this.router.navigateByUrl('/articles')
+  }
 }

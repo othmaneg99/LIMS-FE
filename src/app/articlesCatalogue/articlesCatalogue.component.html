@@ -1,31 +1,26 @@
 <app-user-header></app-user-header>
-<div class="container d-flex mt-5">
-  <div class="col-md-2 ">
-    <button class="btn btn-warning mb-2" routerLink="/articles/1/0">Reset</button>
-    <div class="card"*ngIf="laboratories">
-      <div class="card-header">
-        Par laboratoire
-      </div>
-      <ul class="list-group list-group-flush">
-        <li (click)="getArticlesByLab(l)" class="list-group-item clickable" *ngFor="let l of laboratories._embedded.laboratories">{{l.name}}</li>
-      </ul>
-
-
+<div class="container d-flex">
+  <div class="col-md-2 mt-4">
+    <button color="primary" class="mb-3 w-100" (click)="refresh()" mat-raised-button>{{'allArticles' | translate}}</button>
+    <div class="card" *ngIf="laboratories">
+      <div class="card-header">{{'laboratory' | translate | uppercase}}</div>
+      <mat-selection-list [multiple]="false" class="menu-list">
+        <mat-list-option *ngFor="let l of laboratories._embedded.laboratories" (click)="getArticlesByLab(l)" [value]="l">
+          {{l.name | translate | titlecase}}
+        </mat-list-option>
+      </mat-selection-list>
     </div>
-    <div class="card mt-3"*ngIf="categories">
-      <div class="card-header">
-        Par catégorie
-      </div>
-      <ul class="list-group list-group-flush">
-        <li (click)="getArticlesByCat(c)"class="list-group-item clickable" *ngFor="let c of categories._embedded.categories">{{c.name}}</li>
-      </ul>
-
-
+    <div class="card mt-3" *ngIf="categories">
+      <div class="card-header">{{'category' | translate | uppercase}}</div>
+      <mat-selection-list [multiple]="false" class="menu-list">
+        <mat-list-option *ngFor="let c of categories._embedded.categories" (click)="getArticlesByCat(c)" [value]="c">
+          {{c.name | translate | titlecase}}
+        </mat-list-option>
+      </mat-selection-list>
     </div>
-
-</div>
-  <div class="col-md-10 ">
-<app-articles></app-articles>
+  </div>
+  <div class="col-md-10 mt-1 m-3">
+    <app-articles></app-articles>
   </div>
 </div>
 

@@ -1,10 +1,17 @@
 .clickable {
   cursor: pointer;
 }
+
 .sticky {
   position: sticky;
   top: 10vh;
 }
-.container{
+
+.container {
   display: unset;
+}
+
+.menu-list {
+  max-height: 35vh;
+  overflow-y: scroll
 }

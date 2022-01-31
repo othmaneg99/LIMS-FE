@@ -4,17 +4,46 @@
   height: 25vh;
   object-fit: contain;
 }
+
 .sticky {
   position: sticky;
-
 }
-.grid-containerr {
+
+.article-items {
+  overflow-y: scroll;
+  height: 70vh !important;
+  padding-top: 5px;
+}
+
+.grid-container {
   width: 100%;
   display: grid;
   grid-template-columns: auto auto auto;
-
   grid-gap: 50px;
 }
+
 .margin-left {
   margin-left: 20px;
+}
+
+.search-input {
+  width: 50vw;
+}
+
+.search-bar {
+  //margin: 0 5vh;
+}
+
+.articles {
+  margin-left: 30px !important;
+}
+
+.article-card:hover {
+  border: 2px solid #037db2;
+  color: #fff;
+  .card-body {
+    background-color: #037db2;
+  }
+
+  cursor: pointer;
 }

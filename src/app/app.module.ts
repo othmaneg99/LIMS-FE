@@ -25,6 +25,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {AddArticleComponent} from "./add-article/add-article.component";
+import {MatListModule} from "@angular/material/list";
 
 
 
@@ -75,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatCheckboxModule,
     MatButtonToggleModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
