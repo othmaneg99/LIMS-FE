@@ -6,6 +6,7 @@ import {ListCategoriesComponent} from "./list-categories/list-categories.compone
 import {AdminComponent} from "./admin/admin.component";
 import {ListLaboratoriesComponent} from "./list-laboratories/list-laboratories.component";
 import {ListArticlesComponent} from "./list-articles/list-articles.component";
+import {AddArticleComponent} from "./add-article/add-article.component";
 
 
 const routes: Routes = [
@@ -24,6 +25,8 @@ const routes: Routes = [
   {path: 'admin/categories', component: ListCategoriesComponent},
   {path: 'admin/laboratories', component: ListLaboratoriesComponent},
   {path: 'admin/articles', component: ListArticlesComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'admin/articles/add', component: AddArticleComponent},
 ];
 
 @NgModule({

@@ -24,6 +24,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {AddArticleComponent} from "./add-article/add-article.component";
+
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,8 +45,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminSideBarComponent,
     ListLaboratoriesComponent,
     ListArticlesComponent,
+    AddArticleComponent,
   ],
   imports: [
+
     FormsModule,
     BrowserModule,
     HttpClientModule,
@@ -72,7 +77,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonToggleModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    AdminSideBarComponent,
+    FormsModule,
+  ]
 })
 
 export class AppModule {
