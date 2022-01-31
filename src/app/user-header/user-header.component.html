@@ -1,9 +1,16 @@
-<div class="container d-flex justify-content-between">
-  <img  class="logo" src="/assets/lims.png" alt="LIMS LOGO">
-  <div class="d-flex ">
-    <img class="cart" src="./assets/cart.svg"  alt="">
-    <button class="btn btn-primary align-self-center">Déconnexion</button>
+<div class="navbar navbar-light" style="background-color: #fff;">
+  <div class="container-fluid d-flex justify-content-between">
+    <img class="logo" src="/assets/lims.png" alt="LIMS LOGO">
+    <div class="d-flex ">
+      <div class="example-button-container">
+        <button class="action-btn" mat-fab color="primary" aria-label="Shopping Cart">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <button class="action-btn" mat-fab color="warn" aria-label="Sign Out" (click)="signOut()">
+          <mat-icon aria-hidden="false">logout</mat-icon>
+        </button>
+      </div>
+    </div>
   </div>
-
-
 </div>
+
