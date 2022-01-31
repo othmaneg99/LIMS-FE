@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ArticlesService} from "../services/articles.service";
+import {Component, OnInit} from '@angular/core';
+import {ResourceService} from "../services/resource.service";
 
 @Component({
   selector: 'app-list-laboratories',
@@ -8,14 +8,16 @@ import {ArticlesService} from "../services/articles.service";
 })
 export class ListLaboratoriesComponent implements OnInit {
   public laboratories = <any>{};
-  constructor(private articlesService:ArticlesService) { }
+
+  constructor(private resourceService: ResourceService) {
+  }
 
   ngOnInit(): void {
     this.getLaboratories()
   }
 
   onSaveLaboratory(data: any) {
-    this.articlesService.saveResource(this.articlesService.host+"/laboratories",data).subscribe(
+    this.resourceService.saveResource(this.resourceService.host + "/laboratories", data).subscribe(
       data => {
         this.getLaboratories()
       }
@@ -24,19 +26,18 @@ export class ListLaboratoriesComponent implements OnInit {
   }
 
   private getLaboratories() {
-    return this.articlesService.getResource("/laboratories").subscribe(
-      data =>{
+    return this.resourceService.getResource("/laboratories").subscribe(
+      data => {
         this.laboratories = data
       }
     )
   }
 
-
   onDeleteLaboratory(l: any) {
-    let  conf = confirm("vous etes sures de vouloir supprimer le laboratoire : "+l.name)
+    let conf = confirm("vous etes sures de vouloir supprimer le laboratoire : " + l.name)
 
-    if(conf) {
-      this.articlesService.deleteResource(l._links.self.href).subscribe(
+    if (conf) {
+      this.resourceService.deleteResource(l._links.self.href).subscribe(
         data => {
           this.getLaboratories()
         }

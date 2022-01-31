@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
     if (res.role === 'ADMIN') {
       this.router.navigateByUrl('/admin');
     } else {
-      this.router.navigateByUrl('/user');
+      this.router.navigateByUrl('/articles');
     }
   }
 

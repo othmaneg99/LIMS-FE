@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ArticlesService} from "../services/articles.service";
+import {ResourceService} from "../services/resource.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,7 +12,7 @@ export class ArticlesCatalogueComponent implements OnInit {
   public categories = <any>{};
 
 
-  constructor(private articlesService: ArticlesService,private router:Router) {
+  constructor(private resourceService: ResourceService, private router:Router) {
   }
 
   ngOnInit(): void {
@@ -21,7 +21,7 @@ export class ArticlesCatalogueComponent implements OnInit {
   }
 
   private getLaboratories() {
-    this.articlesService.getResource("/laboratories")
+    this.resourceService.getResource("/laboratories")
       .subscribe(data => {
         this.laboratories = data;
       })
@@ -35,7 +35,7 @@ this.router.navigateByUrl('/articles/2/'+l.id)
   }
 
   private getCategories() {
-    this.articlesService.getResource("/categories")
+    this.resourceService.getResource("/categories")
       .subscribe(data => {
         this.categories = data;
       })

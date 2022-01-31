@@ -12,7 +12,7 @@
   <div  style ="margin: 10px 20px" *ngFor="let a of articles._embedded.articles" class="">
 
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{{this.articlesService.host+'/photoArticle/'+a.id}}" alt="Article image">
+      <img class="card-img-top" src="{{this.resourceService.host+'/photoArticle/'+a.id}}" alt="Article image">
       <div class="card-body">
         <h5 class="card-title">{{a.name}}</h5>
 

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ArticlesService} from "../services/articles.service";
+import {Component, OnInit} from '@angular/core';
+import {ResourceService} from "../services/resource.service";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 
 @Component({
@@ -10,32 +10,25 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 export class ArticlesComponent implements OnInit {
 
   public articles = <any>{};
-  constructor(public articlesService:ArticlesService,
-              private route:ActivatedRoute,
-              private router:Router
-              ) {
 
-    }
-
+  constructor(public resourceService: ResourceService, private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit(): void {
-    this.router.events.subscribe((val) =>{
-      if (val instanceof NavigationEnd){
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
         let url = val.url;
         let p1 = this.route.snapshot.params.p1
         if (p1 == 1) {
           this.getArticles("/articles")
 
-        }
-        else if (p1 == 2){
+        } else if (p1 == 2) {
           let idLab = this.route.snapshot.params.p2
-          this.getArticles("/laboratories/"+idLab+"/articles")
-        }
-        else if (p1 == 3){
+          this.getArticles("/laboratories/" + idLab + "/articles")
+        } else if (p1 == 3) {
           let idCat = this.route.snapshot.params.p2
-          this.getArticles("/categories/"+idCat+"/articles")
+          this.getArticles("/categories/" + idCat + "/articles")
         }
-
       }
     });
     let p1 = this.route.snapshot.params.p1
@@ -45,14 +38,15 @@ export class ArticlesComponent implements OnInit {
     }
   }
 
-  private getArticles(url:any) {
-    this.articlesService.getResource(url)
+  private getArticles(url: any) {
+    this.resourceService.getResource(url)
       .subscribe(data => {
         this.articles = data;
       })
   }
-  private getArticlesByKeyword(mc:any) {
-    this.articlesService.getResource('/articles/search/articlesByKeyword?mc='+mc)
+
+  private getArticlesByKeyword(mc: any) {
+    this.resourceService.getResource('/articles/search/articlesByKeyword?mc=' + mc)
       .subscribe(data => {
         this.articles = data;
       })

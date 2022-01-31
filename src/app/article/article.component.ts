@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ArticlesService} from "../services/articles.service";
-import {ArticlesComponent} from "../articles/articles.component";
+import {Component, OnInit} from '@angular/core';
+import {ResourceService} from "../services/resource.service";
 import {ActivatedRoute} from "@angular/router";
+import {environment} from "src/environments/environment";
 
 @Component({
   selector: 'app-article',
@@ -9,18 +9,21 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./article.component.scss']
 })
 export class ArticleComponent implements OnInit {
-public article:any = {}
-  constructor(public articleService:ArticlesService,
-              private route:ActivatedRoute) { }
+  public article: any = {}
+  public apiBaseUrl: string = environment.apiBaseUrl;
+
+  constructor(public resourceService: ResourceService, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     let idArticle = this.route.snapshot.params.id
 
-    this.articleService.getResource("/articles/"+idArticle)
+    this.resourceService.getResource("/articles/" + idArticle)
       .subscribe(data => {
         this.article = data;
       })
   }
+
   doThis() {
     console.log('zab')
   }
