@@ -10,13 +10,8 @@ export class AuthService {
   constructor(private api: ApiService) {
   }
 
-  async signIn(data: signInRequest, onSuccess: (res: any) => void, onError: (err: any) => void) {
-    try {
-      const res = await this.api.post('/auth/signin', data).toPromise();
-      onSuccess(res);
-    } catch (e) {
-      onError(e);
-    }
+  signIn(data: signInRequest) {
+    return this.api.post('/auth/signin', data).toPromise();
   }
 }
 

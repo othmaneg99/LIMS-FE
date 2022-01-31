@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
               private ref: ChangeDetectorRef,
               private authService: AuthService,
               private translateService: TranslateService,
-              private router: Router) {
+              public router: Router) {
     this.hidePassword = true;
     this.lang = localStorage.getItem('lang');
   }
@@ -40,28 +40,36 @@ export class HomeComponent implements OnInit {
   async googleSignIn() {
     await this.googleService.signIn();
     if (this.user) {
-      await this.authService.signIn({
-        googleSignIn: true,
-        googleAuthData: {
-          firstName: this.user.getBasicProfile().getGivenName(),
-          lastName: this.user.getBasicProfile().getFamilyName(),
-          email: this.user.getBasicProfile().getEmail(),
-          idToken: this.user.getAuthResponse().id_token,
-          accessToken: this.user.getAuthResponse().access_token,
-          expiresAt: this.user.getAuthResponse().expires_at,
-          expiresIn: this.user.getAuthResponse().expires_in,
-          issuedAt: this.user.getAuthResponse().first_issued_at,
-        }
-      }, this.onSignInSuccess, this.onSignInFail);
+      try {
+        this.onSignInSuccess(await this.authService.signIn({
+          googleSignIn: true,
+          googleAuthData: {
+            firstName: this.user.getBasicProfile().getGivenName(),
+            lastName: this.user.getBasicProfile().getFamilyName(),
+            email: this.user.getBasicProfile().getEmail(),
+            idToken: this.user.getAuthResponse().id_token,
+            accessToken: this.user.getAuthResponse().access_token,
+            expiresAt: this.user.getAuthResponse().expires_at,
+            expiresIn: this.user.getAuthResponse().expires_in,
+            issuedAt: this.user.getAuthResponse().first_issued_at,
+          }
+        }));
+      } catch (e) {
+        this.onSignInFail(e);
+      }
     }
   }
 
   async onFormSubmit(form: NgForm) {
     if (form.valid) {
-      await this.authService.signIn({
-        googleSignIn: false,
-        ...form.value
-      }, this.onSignInSuccess, this.onSignInFail);
+      try {
+        this.onSignInSuccess(await this.authService.signIn({
+          googleSignIn: false,
+          ...form.value
+        }));
+      } catch (e) {
+        this.onSignInFail(e);
+      }
     }
   }
 

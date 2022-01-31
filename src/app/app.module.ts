@@ -61,7 +61,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: 'articles', component: ArticlesComponent},
       {path: 'article/:id', component: ArticleComponent},
       {path: 'admin', component: AdminComponent},
-
     ]),
     HttpClientModule,
     BrowserAnimationsModule,

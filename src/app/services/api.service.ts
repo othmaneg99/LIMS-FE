@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,13 @@ export default class ApiService {
 
   private static baseURL: string = 'http://localhost:8081';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   private static getHeaders = () => {
     let user: any = sessionStorage.getItem('user');
     if (user) user = JSON.parse(atob(user));
     return {
-      'Authorization': user.accessToken || '',
+      'Authorization': user?.accessToken || '',
       'Content-Type': 'application/json',
     }
   }
