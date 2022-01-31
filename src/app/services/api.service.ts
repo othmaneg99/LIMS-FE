@@ -20,7 +20,7 @@ export default class ApiService {
     }
   }
 
-  get(path: string, params: any) {
+  get(path: string, params: any= {}) {
     return this.httpClient.get(ApiService.baseURL + path, {
       headers: ApiService.getHeaders(),
       params
@@ -29,6 +29,12 @@ export default class ApiService {
 
   post(path: string, body: any) {
     return this.httpClient.post(ApiService.baseURL + path, body, {
+      headers: ApiService.getHeaders(),
+    });
+  }
+
+  delete(path: string, body?: any) {
+    return this.httpClient.delete(ApiService.baseURL + path, {
       headers: ApiService.getHeaders(),
     });
   }
